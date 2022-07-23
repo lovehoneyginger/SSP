@@ -1,0 +1,18 @@
+{% extends "layouts/base_stud.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+      <form class="form-inline my-2 my-lg-0" action="{% url 'student_search_class'%}" method=POST>
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" name="q" type="search" placeholder="Class ID" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    <div class="wrapper">
+        {% block search %}{% endblock search %}
+    </div>
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

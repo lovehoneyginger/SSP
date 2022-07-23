@@ -1,0 +1,39 @@
+{% extends "layouts/base_stud.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h1>PDF Material</h1>
+
+  <p> </p>
+  <p> </p>
+  <p> </p> 
+<h1>PDF List</h1>
+ <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download/View</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pdfi in pdf %}
+        <tr>
+          <td>{{ pdfi.title }}</td>
+          <td>
+            {% if pdfi.pdf %}
+            <a href="{{ pdfi.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download PDF
+            </a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

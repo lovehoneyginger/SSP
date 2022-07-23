@@ -1,0 +1,18 @@
+{% extends "layouts/base_teach.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h1>Study material for {{class_id}}</h2>
+<table class="table table-borderless">
+        <tr>
+            <td><a href="{% url 'view_pdf' class_id %}">
+              <i class="fa fa-folder" style="font-size:48px;"> | PDF</i></a></td>
+            <td><a href="{% url 'view_videos' class_id %}"><i class="fa fa-folder" style="font-size:48px;"> | Videos</i></a></td>
+        </tr>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

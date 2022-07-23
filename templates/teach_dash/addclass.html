@@ -1,0 +1,49 @@
+{% extends "layouts/base_teach.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}
+{% endblock stylesheets %}
+
+{% block content %}
+
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+    {{form.class_id|as_crispy_field}}
+    
+    </div>
+    <div class="w3-panel w3-red">
+    <h5>Class Id must not be Course Id</h5>
+    </div>
+    <div class="row">
+    {{form.Year_of_introduction_of_class|as_crispy_field}}
+    </div>
+    <div class="row">
+            {{form.teacher_id|as_crispy_field}}
+            
+    </div>
+    <div class="w3-panel w3-red">
+            <h5>Choose your Teacher ID</h5>
+    </div>
+    <div class="row">
+        
+            {{form.course_id|as_crispy_field}}
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'teacher_classes_list' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream"></i> Back to list
+            </a>
+        </div>
+    </div>
+
+</form>
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

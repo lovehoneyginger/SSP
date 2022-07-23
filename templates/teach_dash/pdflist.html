@@ -1,0 +1,50 @@
+{% extends "layouts/base_teach.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h1>Upload Pdf</h1>
+<p>
+    <a href="{% url 'teacher_pdf_upload' class_id %}" class="btn btn-primary">
+           
+              Upload pdf</a>
+  </p>
+  <p> </p>
+  <p> </p>
+  <p> </p> 
+<h1>PDF List</h1>
+ <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download/View</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for pdfi in pdf %}
+        <tr>
+          <td>{{ pdfi.title }}</td>
+          <td>
+            {% if pdfi.pdf %}
+            <a href="{{ pdfi.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download PDF
+            </a>
+            {% endif %}
+          </td>
+          <td>
+            <form method="post" action="{% url 'teacher_delete_pdf' pdfi.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SSP Program</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static '/css/style1.css'%}">
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <img src="{% static '/images/logo.png'%}" class="logo">
+                <nav>
+                    <ul id = "menulist">
+                        <li><a href="">Home</a></li>
+                        <li><a href="">Features</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </nav>
+                <img src="{% static '/images/menu.png'%}" class="menu-icon" onclick = "togglemenu()">
+            </div>
+
+            <div class="row">
+                <div class="col-1">
+                    <h2>SSP Program <br> AISAT, Kalamassery</h2>
+                    <h3>Student Support Program</h3>
+                    <h4>For students<br>& teachers</h4>
+                    <button type="button" onclick="window.location.href='{% url 'student_login' %}'">Students<img src="{% static '/images/arrow.png'%}">
+                    </button><br><br>
+                    <button type="button" onclick="window.location.href='{% url 'teacher_login' %}'">Teacher<img src="{% static '/images/arrow.png'%}">
+                    </button>
+                </div>
+                <div class="col-2">
+                    <img src="{% static '/images/helping hand.jpg'%}" class="controller">
+                    <div class="color-box"></div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            var menulist = document.getElementById("menulist");
+            menulist.style.maxHeight = "0px";
+            function togglemenu(){
+                if(menulist.style.maxHeight == "0px"){
+                    menulist.style.maxHeight = "130px";
+                }
+                else{
+                    menulist.style.maxHeight = "0px";
+                }
+            }
+        </script>
+    </body>
+</html>

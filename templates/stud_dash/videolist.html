@@ -1,0 +1,39 @@
+{% extends "layouts/base_stud.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h1>Video Materials</h1>
+
+  <p> </p>
+  <p> </p>
+  <p> </p> 
+<h1>Video List</h1>
+ <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download/View</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for videoi in video %}
+        <tr>
+          <td>{{ videoi.title }}</td>
+          <td>
+            {% if videoi.video %}
+            <a href="{{ videoi.video.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download Video
+            </a>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,21 @@
+{% extends "layouts/base_teach.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+  <h2>Upload video</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <p style="color:red;">This upload is for class with ID : {{class_id}}</p>
+    <p style="color:red;">Choose this ID in the below field</p>
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Upload video</button>
+  </form>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

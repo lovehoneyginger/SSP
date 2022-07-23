@@ -1,0 +1,66 @@
+{% extends "layouts/base_teach.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+  
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Performance</h5>
+            <h3 class="card-title"></h3>
+            </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="chartLinePurple"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Create a class</h5>
+            <h3 class="card-title"></h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="CountryChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Classes</h5>
+            <h3 class="card-title"></h3>
+          </div>
+          <div class="card-body">
+            <div class="chart-area">
+              <canvas id="chartLineGreen"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+  <script>
+    $(document).ready(function() {
+      // Javascript method's body can be found in assets/js/demos.js
+      demo.initDashboardPageCharts();
+
+    });
+  </script>
+
+{% endblock javascripts %}

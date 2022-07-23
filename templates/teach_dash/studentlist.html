@@ -1,0 +1,33 @@
+{% extends "layouts/base_teach.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h1>Student List</h1>
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>University ID</td>
+            <td>Semester</td>
+            <td>Branch</td>
+            <td>Year of study</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in student_list %}
+            <tr>
+                <td>{{student.uni_id}}</td>
+                <td>{{student.semester}}</td>
+                <td>{{student.branch}}</td>
+                <td>{{student.year_of_study}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

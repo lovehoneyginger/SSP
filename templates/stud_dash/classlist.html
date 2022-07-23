@@ -1,0 +1,39 @@
+{% extends "layouts/base_stud.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Student ID</td>
+            <td>Class ID</td>
+            <td>Enrollment ID</td>
+            <td>Unenroll</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for class in class_list %}
+            <tr>
+                <td>{{class.enrolled_student_id}}</td>
+                <td>{{class.enrolled_class_id}}</td>
+                <td>{{class.enrollment_id}}</td>
+                <td>
+                    <form action="{% url 'student_class_delete' class.enrollment_id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

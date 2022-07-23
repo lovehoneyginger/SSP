@@ -1,0 +1,71 @@
+
+
+    <div class="sidebar">
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a target="_blank" rel="sponsored noopener noreferrer" 
+             href="https://aisat.ac.in/" class="simple-text logo-mini">
+            Aisat
+          </a>
+          <a target="_blank" rel="sponsored noopener noreferrer" 
+             href="{% url 'teacher_index'%}" class="simple-text logo-normal">
+            SSP Program
+          </a>
+        </div>
+
+        <ul class="nav">
+          {% if user.is_authenticated%}
+          <li class="{% if 'index' in segment %} active {% endif %}">
+            <a href={% url 'teacher_index' %}>
+              <i class="tim-icons icon-chart-pie-36"></i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <li class="{% if 'icons' in segment %} active {% endif %}">
+            <a href={% url 'teacher_classes_list' %}>
+              <i class="tim-icons icon-atom"></i>
+              <p>Classes</p>
+            </a>
+          </li>
+          <li class="{% if 'maps' in segment %} active {% endif %}">
+            <a href={% url 'teacher_add_class' %}>
+              <i class="tim-icons icon-pin"></i>
+              <p>Create a Class</p>
+            </a>
+          </li>
+          <li class="{% if 'page-user' in segment %} active {% endif %}">
+            <a href="{% url 'teacher_profile_update' %}">
+              <i class="tim-icons icon-single-02"></i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li class="{% if 'tables' in segment %} active {% endif %}">
+            <a href="{% url 'teacher_study_material_index'%}">
+              <i class="tim-icons icon-puzzle-10"></i>
+              <p>Study Material</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'teacher_logout' %}" >
+              <i class="tim-icons icon-button-power"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+           {% else %}
+          <li>
+            <a href="{% url 'teacher_register' %}" >
+              <i class="tim-icons icon-button-power"></i>
+              <p>Resgiter</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'teacher_login' %}" >
+              <i class="tim-icons icon-button-power"></i>
+              <p>Login</p>
+            </a>
+          </li>
+          {% endif %}         
+        </ul>
+        
+      </div>
+    </div>

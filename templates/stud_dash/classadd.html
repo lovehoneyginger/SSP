@@ -1,0 +1,30 @@
+{% extends 'stud_dash/searchclass.html' %}
+{% block search %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Course ID</td>
+            <td>Class ID</td>
+            <td>Year of introduction</td>
+            <td>Enroll</td>
+        </tr>
+    </thead>
+    <tbody>
+    {% for data in dat %}
+      <tr>
+        <td>{{ data.course_id }}</td>
+        <td>{{ data.class_id }}</td>
+        <td>{{ data.Year_of_introduction_of_class }}</td>
+        <td>
+          <form action="{% url 'student_classes_list' data.class_id %}" method="post" class="d-inline">
+          {% csrf_token %}
+              <button type="submit" class="btn">
+                    <i class="fas fa-plus"></i> Join
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+</table>
+{% endblock search %}

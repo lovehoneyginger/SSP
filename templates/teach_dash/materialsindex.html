@@ -1,0 +1,46 @@
+{% extends "layouts/base_teach.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">{% endblock stylesheets %}
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>Class ID</td>
+            <td>Teacher ID</td>
+            <td>Year of introduction</td>
+            <td>Course ID</td>
+            <td>
+                <a href="{% url 'teacher_add_class' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for class in class_list %}
+            <tr>
+                <td><a href="{% url 'teacher_material_type_select' class.class_id %}">{{class.class_id}}</a></td>
+                <td>{{class.teacher_id}}</td>
+                <td>{{class.Year_of_introduction_of_class}}</td>
+                <td>{{class.course_id}}</td>
+                <td>
+                    <form action="{% url 'teacher_student_list' class.class_id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="fa fa-eye" aria-hidden="true"> | View students</i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}

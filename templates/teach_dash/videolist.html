@@ -1,0 +1,50 @@
+{% extends "layouts/base_teach.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h1>Upload Video</h1>
+<p>
+    <a href="{% url 'teacher_video_upload' class_id %}" class="btn btn-primary">
+           
+              Upload video</a>
+  </p>
+  <p> </p>
+  <p> </p>
+  <p> </p> 
+<h1>Video List</h1>
+ <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download/View</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for videoi in video %}
+        <tr>
+          <td>{{ videoi.title }}</td>
+          <td>
+            {% if videoi.video %}
+            <a href="{{ videoi.video.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download Video
+            </a>
+            {% endif %}
+          </td>
+          <td>
+            <form method="post" action="{% url 'teacher_delete_video' videoi.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}
